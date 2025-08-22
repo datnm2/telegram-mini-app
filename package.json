@@ -8,7 +8,9 @@
     "start:frontend": "cd frontend && npm run dev",
     "start:bot": "cd bot && npm start",
     "build:frontend": "cd frontend && npm run build",
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../bot && npm install"
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../bot && npm install",
+    "deploy": "npm run build:frontend && netlify deploy --dir=frontend/dist --prod",
+    "deploy:preview": "npm run build:frontend && netlify deploy --dir=frontend/dist"
   },
   "keywords": ["telegram", "mini-app", "quest", "rewards", "gamification"],
   "author": "",
