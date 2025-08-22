@@ -1,0 +1,16 @@
+{
+  "name": "telegram-quest-rewards",
+  "version": "1.0.0",
+  "description": "Telegram Mini App with gamified quest system",
+  "scripts": {
+    "start": "npm run start:backend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:bot": "cd bot && npm start",
+    "build:frontend": "cd frontend && npm run build",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../bot && npm install"
+  },
+  "keywords": ["telegram", "mini-app", "quest", "rewards", "gamification"],
+  "author": "",
+  "license": "MIT"
+}
