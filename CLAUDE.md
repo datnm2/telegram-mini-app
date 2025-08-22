@@ -6,3 +6,6 @@ Use can divide to seperated sub folder if needed
 
 App should be very simple first. Just adapt a full flow from BE-FE-API_BOT is enough
 </goal>
+
+# Git Configuration
+Before any git operations, run `gh-personal` command to switch to personal git credentials.
