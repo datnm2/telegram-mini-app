@@ -20,9 +20,22 @@ bot.onText(/\/start/, (msg) => {
   
   console.log(`User ${userId} started the bot`);
   
-  const welcomeMessage = `🎮 Welcome to Quest Rewards!\n\nEarn points by completing simple tasks and quests.\n\n🔧 For local testing, open this URL in your browser:\n${webAppUrl}\n\n(Telegram doesn't allow localhost URLs in buttons, so copy the link above)`;
+  const welcomeMessage = `🎮 Welcome to Quest Rewards!\n\nEarn points by completing simple tasks and quests.`;
   
-  bot.sendMessage(chatId, welcomeMessage);
+  const options = {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: '🚀 Open Quest App',
+            web_app: { url: webAppUrl }
+          }
+        ]
+      ]
+    }
+  };
+  
+  bot.sendMessage(chatId, welcomeMessage, options);
 });
 
 // Handle /help command

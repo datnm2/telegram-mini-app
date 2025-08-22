@@ -4,6 +4,7 @@
   "description": "Telegram Mini App with gamified quest system",
   "scripts": {
     "start": "npm run start:backend",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:bot\"",
     "start:backend": "cd backend && npm start",
     "start:frontend": "cd frontend && npm run dev",
     "start:bot": "cd bot && npm start",
@@ -12,7 +13,16 @@
     "deploy": "npm run build:frontend && netlify deploy --dir=frontend/dist --prod",
     "deploy:preview": "npm run build:frontend && netlify deploy --dir=frontend/dist"
   },
-  "keywords": ["telegram", "mini-app", "quest", "rewards", "gamification"],
+  "keywords": [
+    "telegram",
+    "mini-app",
+    "quest",
+    "rewards",
+    "gamification"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
 }

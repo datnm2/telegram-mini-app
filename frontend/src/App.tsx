@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const API_BASE = 'http://localhost:3001/api'
+const API_BASE = import.meta.env.PROD 
+  ? 'https://telegram-mini-app-demo.netlify.app/.netlify/functions/api' 
+  : 'http://localhost:3001/api'
 
 interface Quest {
   id: string
@@ -26,6 +28,14 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  // Initialize Telegram WebApp
+  useEffect(() => {
+    if (window.Telegram?.WebApp) {
+      window.Telegram.WebApp.ready()
+      window.Telegram.WebApp.expand()
+    }
+  }, [])
+
   // Get Telegram user ID (mock for development)
   const getTelegramUserId = (): string => {
     // In production, this would come from Telegram WebApp
@@ -43,6 +53,9 @@ function App() {
         axios.get(`${API_BASE}/user/${telegramId}`),
         axios.get(`${API_BASE}/quests/${telegramId}`)
       ])
+
+      console.log('userResponse:', userResponse.data)
+      console.log('questsResponse:', questsResponse.data)
       
       setUser(userResponse.data)
       setQuests(questsResponse.data.quests)
